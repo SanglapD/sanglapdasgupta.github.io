@@ -111,6 +111,10 @@ img {
   z-index: 999;
 }
 
+.sidebar.scrolled {
+  background-color: var(--bg-color);
+}
+
 @media (max-width: 768px) {
   .sidebar {
     display: none;
