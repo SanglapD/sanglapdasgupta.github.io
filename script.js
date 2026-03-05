@@ -108,4 +108,22 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+
+  /* Toggle a white background on the sidebar once the user scrolls past the hero section.
+     This keeps the sidebar transparent over the hero image but gives it a solid background
+     when floating above subsequent sections. */
+  const sidebar = document.getElementById('sidebar');
+  const heroSection = document.getElementById('hero');
+  function updateSidebarBackground() {
+    if (!sidebar || !heroSection) return;
+    const heroHeight = heroSection.offsetHeight;
+    if (window.pageYOffset >= heroHeight) {
+      sidebar.classList.add('scrolled');
+    } else {
+      sidebar.classList.remove('scrolled');
+    }
+  }
+  window.addEventListener('scroll', updateSidebarBackground);
+  // Run once on load in case the page is not at the top
+  updateSidebarBackground();
 });

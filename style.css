@@ -98,8 +98,12 @@ img {
   left: 0;
   bottom: 0;
   width: var(--sidebar-width);
-  background-color: var(--bg-color);
-  border-right: 1px solid #e2e8f0;
+  /* The sidebar has no background; it inherits the underlying section. On the hero
+     page this means it will float over the hero image, and on subsequent
+     sections it will adopt the white page background. */
+  background-color: transparent;
+  /* Remove the dividing line so the hero flows seamlessly into the nav */
+  border-right: none;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -131,7 +135,9 @@ img {
   /* Remove circular backgrounds and borders for nav icons */
   border-radius: 0;
   background-color: transparent;
-  color: var(--text-color);
+  /* Colour nav icons with the primary accent so they remain visible on
+     transparent backgrounds. */
+  color: var(--primary-color);
   font-size: 1.2rem;
   transition: color 0.3s ease, background-color 0.3s ease;
 }
@@ -166,6 +172,28 @@ img {
   /* Active nav item has a subtle grey background instead of blue */
   background-color: var(--secondary-color);
   color: var(--text-color);
+}
+
+/* When the page is scrolled beyond the hero section, give the sidebar a white background.
+   This ensures the navigation bar stands out against subsequent sections while remaining
+   transparent over the hero image. */
+.sidebar.scrolled {
+  background-color: var(--bg-color);
+}
+
+/* Set consistent size and fill for inline SVG icons used in navigation and contact sections.
+   Icons inherit the current text colour from their parent anchor. */
+.nav-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: currentColor;
+}
+
+/* Ensure SVGs inside contact icons scale appropriately */
+.contact-icon svg {
+  width: 1.3rem;
+  height: 1.3rem;
+  fill: currentColor;
 }
 
 .mobile-menu {
@@ -268,10 +296,13 @@ img {
 .hero-overlay {
   position: absolute;
   inset: 0;
-  /* White overlay with 90% transparency. 90% transparent means the image is mostly
-     visible (only 10% opaque) creating a gentle wash. */
-  background: rgba(255, 255, 255, 0.1);
-  /* Optional blur for a subtle frosted glass effect */
+  /* White overlay with 97% transparency (3% opaque). A very light layer
+     provides just enough contrast so the text remains legible without
+     completely obscuring the photo. */
+  /* Nearly opaque (97% white) overlay improves text readability against
+     bright or busy images while still allowing the photo to peek through. */
+  background: rgba(255, 255, 255, 0.97);
+  /* Keep a slight blur for a premium frosted effect */
   backdrop-filter: blur(2px);
   z-index: 1;
 }
@@ -458,6 +489,44 @@ img {
 .skill-tile i {
   font-size: 2rem;
   margin-bottom: 0.5rem;
+}
+
+/* Apply brand colours to specific tool icons in the Tools & Interests section */
+.skill-tile .devicon-fastapi-plain {
+  /* FastAPI brand teal */
+  color: #009688;
+}
+
+.skill-tile .fa-aws {
+  /* AWS brand orange */
+  color: #FF9900;
+}
+
+.skill-tile .fa-bolt {
+  /* Power Automate brand blue */
+  color: #0086D8;
+}
+
+.skill-tile .fa-microchip {
+  /* GPU computing (NVIDIA) green */
+  color: #76B900;
+}
+
+.skill-tile .devicon-unrealengine-original {
+  /* Unreal Engine dark grey */
+  color: #313131;
+}
+
+.skill-tile .fa-cubes-stacked {
+  /* n8n brand orange */
+  color: #FA4E32;
+}
+
+/* Use a recognisable colour for the database icon (SQL).  Many database
+   logos feature a blue hue; this helps distinguish the SQL tile from
+   plain text while retaining the clean aesthetic. */
+.skill-tile .fa-database {
+  color: #336791;
 }
 
 /* Icons without a "colored" class inherit black text colour */
