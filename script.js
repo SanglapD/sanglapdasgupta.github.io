@@ -111,19 +111,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* Toggle a white background on the sidebar once the user scrolls past the hero section.
      This keeps the sidebar transparent over the hero image but gives it a solid background
-     when floating above subsequent sections. */
+     when floating above subsequent sections. We use the hero's bounding rect to detect
+     when its bottom leaves the viewport, which is more reliable than offsetHeight. */
   const sidebar = document.getElementById('sidebar');
   const heroSection = document.getElementById('hero');
   function updateSidebarBackground() {
     if (!sidebar || !heroSection) return;
-    const heroHeight = heroSection.offsetHeight;
-    if (window.pageYOffset >= heroHeight) {
+    const heroBottom = heroSection.getBoundingClientRect().bottom;
+    if (heroBottom <= 0) {
       sidebar.classList.add('scrolled');
     } else {
       sidebar.classList.remove('scrolled');
     }
   }
   window.addEventListener('scroll', updateSidebarBackground);
-  // Run once on load in case the page is not at the top
   updateSidebarBackground();
+
+  /* Highlight the current navigation item based on scroll position.
+     As the user scrolls, determine which section is currently in view
+     and mark its corresponding nav item as active. */
+  const sections = document.querySelectorAll('section');
+  function updateActiveNav() {
+    let currentSection = '';
+    sections.forEach(section => {
+      const rect = section.getBoundingClientRect();
+      // Use a threshold based on one third of the viewport height
+      if (rect.top <= window.innerHeight / 3 && rect.bottom > window.innerHeight / 3) {
+        currentSection = section.getAttribute('id');
+      }
+    });
+    navItems.forEach(item => {
+      const link = item.querySelector('a');
+      if (link && link.getAttribute('href') === '#' + currentSection) {
+        item.classList.add('active');
+      } else {
+        item.classList.remove('active');
+      }
+    });
+  }
+  window.addEventListener('scroll', updateActiveNav);
+  updateActiveNav();
 });

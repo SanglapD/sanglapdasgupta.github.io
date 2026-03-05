@@ -109,10 +109,8 @@ img {
   align-items: center;
   padding-top: 1.5rem;
   z-index: 999;
-}
-
-.sidebar.scrolled {
-  background-color: var(--bg-color);
+  /* Enable a smooth width transition so the sidebar can slide out on hover */
+  transition: background-color 0.3s ease, width 0.3s ease;
 }
 
 @media (max-width: 768px) {
@@ -185,6 +183,20 @@ img {
   background-color: var(--bg-color);
 }
 
+/* Slide out the sidebar on hover to reveal section names.
+   The expanded width can be adjusted; here we use 200px to ensure
+   enough space for both icons and labels. The content stays in place; the
+   sidebar overlays it temporarily. */
+.sidebar:hover {
+  width: 200px;
+}
+
+/* When the sidebar is expanded, reveal the text labels for each nav item. */
+.sidebar:hover .nav-icons li a span {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 /* Set consistent size and fill for inline SVG icons used in navigation and contact sections.
    Icons inherit the current text colour from their parent anchor. */
 .nav-icon {
@@ -251,14 +263,12 @@ img {
   margin-bottom: 2rem;
   position: relative;
   padding-bottom: 0.5rem;
-  text-align: center;
 }
 
 .section-title::after {
   content: '';
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
   bottom: 0;
   width: 60px;
   height: 3px;
@@ -307,7 +317,7 @@ img {
      completely obscuring the photo. */
   /* Nearly opaque (97% white) overlay improves text readability against
      bright or busy images while still allowing the photo to peek through. */
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.97);
   /* Keep a slight blur for a premium frosted effect */
   backdrop-filter: blur(2px);
   z-index: 1;
