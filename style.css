@@ -252,7 +252,7 @@ img {
   text-align: left;
   overflow: hidden;
   /* apply the hero background directly to this container */
-  background-image: url('assets/hero.png');
+  background-image: url('assets/hero.jpeg');
   background-size: cover;
   /* anchor the image to the bottom so the subject remains in view */
   background-position: center bottom;
