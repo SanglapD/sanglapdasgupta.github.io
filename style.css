@@ -301,7 +301,7 @@ img {
      completely obscuring the photo. */
   /* Nearly opaque (97% white) overlay improves text readability against
      bright or busy images while still allowing the photo to peek through. */
-  background: rgba(255, 255, 255, 0);
+  background: rgba(255, 255, 255, 0.3);
   /* Keep a slight blur for a premium frosted effect */
   backdrop-filter: blur(2px);
   z-index: 1;
