@@ -8,11 +8,16 @@
 
 /* Colour palette & sizes */
 :root {
-  --primary-color: #38bdf8;
-  --secondary-color: #e0f2fe;
+  /* Primary accent colour updated to Facebook deep blue for underlines */
+  /* Primary accent is only used for underlines. Facebook deep blue */
+  --primary-color: #1877F2;
+  /* Secondary colour for subtle hover backgrounds (light grey, not blue) */
+  --secondary-color: #f0f0f0;
   --bg-color: #ffffff;
-  --text-color: #0f172a;
-  --muted-text: #64748b;
+  /* All text is black */
+  --text-color: #000000;
+  /* Muted text is also black to satisfy "strictly black" requirement */
+  --muted-text: #000000;
   --sidebar-width: 72px;
   --border-radius: 12px;
 }
@@ -24,10 +29,12 @@
 }
 
 body {
-  font-family: 'Inter', Arial, sans-serif;
+  /* Use a basic standard sans-serif font family for a clean, timeless look */
+  font-family: Arial, Helvetica, sans-serif;
   background-color: var(--bg-color);
   color: var(--text-color);
-  line-height: 1.6;
+  /* Slightly tighter line height for a smaller, compact feel */
+  line-height: 1.5;
 }
 
 a {
@@ -121,11 +128,12 @@ img {
   justify-content: center;
   width: 46px;
   height: 46px;
-  border-radius: 50%;
-  background-color: #f1f5f9;
-  color: var(--muted-text);
+  /* Remove circular backgrounds and borders for nav icons */
+  border-radius: 0;
+  background-color: transparent;
+  color: var(--text-color);
   font-size: 1.2rem;
-  transition: all 0.3s ease;
+  transition: color 0.3s ease, background-color 0.3s ease;
 }
 
 .nav-icons li a span {
@@ -149,13 +157,15 @@ img {
 }
 
 .nav-icons li a:hover {
+  /* On hover, use a very light grey background and keep icon black */
   background-color: var(--secondary-color);
-  color: var(--primary-color);
+  color: var(--text-color);
 }
 
 .nav-icons li.active a {
-  background-color: var(--primary-color);
-  color: #fff;
+  /* Active nav item has a subtle grey background instead of blue */
+  background-color: var(--secondary-color);
+  color: var(--text-color);
 }
 
 .mobile-menu {
@@ -203,8 +213,9 @@ img {
 }
 
 .section-title {
-  font-size: 2rem;
-  font-weight: 600;
+  /* Smaller heading size and lighter weight for a refined look */
+  font-size: 1.8rem;
+  font-weight: 400;
   margin-bottom: 2rem;
   position: relative;
   padding-bottom: 0.5rem;
@@ -225,8 +236,9 @@ img {
   height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
+  /* Left align hero content within the section */
+  justify-content: flex-start;
+  text-align: left;
 }
 
 .hero-bg {
@@ -242,39 +254,52 @@ img {
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(5px);
+  /* White overlay with 90% transparency over hero image */
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: none;
   z-index: -1;
 }
 
 .hero-inner {
   max-width: 800px;
-  padding: 2rem;
-  background-color: rgba(255, 255, 255, 0.65);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  border-radius: 18px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 3rem 2rem;
+  /* Remove background and border to let overlay dictate brightness */
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  /* Left align content */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
 }
 
 .hero-title {
-  font-size: 2.5rem;
+  /* Slightly reduce hero title size and maintain normal weight */
+  font-size: 1.8rem;
+  font-weight: 400;
   margin-bottom: 0.5rem;
 }
 
 .hero-title .highlight {
-  color: var(--primary-color);
+  /* Highlight uses the same text colour (black) */
+  color: var(--text-color);
 }
 
 .hero-role {
-  font-size: 1.5rem;
+  /* Reduce role font size a bit for a more understated look */
+  font-size: 1.2rem;
+  font-weight: 400;
   margin-bottom: 1.5rem;
-  color: var(--muted-text);
+  color: var(--text-color);
 }
 
 #cursor {
   display: inline-block;
   margin-left: 4px;
-  color: var(--primary-color);
+  /* Cursor uses black to match hero text */
+  color: var(--text-color);
   animation: blink 1s steps(1) infinite;
 }
 
@@ -288,10 +313,10 @@ img {
 }
 
 .hero-actions {
-  margin-top: 1.5rem;
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 1rem;
 }
 
@@ -304,18 +329,18 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background-color: #f1f5f9;
-  color: var(--primary-color);
+  width: 40px;
+  height: 40px;
+  border-radius: 0;
+  background-color: transparent;
+  color: var(--text-color);
   font-size: 1.3rem;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
 .contact-icon:hover {
-  background-color: var(--primary-color);
-  color: #fff;
+  /* On hover, slightly lift and darken text */
+  color: var(--text-color);
   transform: translateY(-3px);
 }
 
@@ -323,11 +348,11 @@ img {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background-color: var(--primary-color);
-  color: #fff;
+  background-color: var(--text-color);
+  color: #ffffff;
   padding: 0.7rem 1.5rem;
   border-radius: 9999px;
-  font-weight: 600;
+  font-weight: 400;
   border: none;
   cursor: pointer;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -367,7 +392,7 @@ img {
 .about-section .about-text {
   flex: 1 1 300px;
   font-size: 1rem;
-  color: var(--muted-text);
+  color: var(--text-color);
 }
 
 @media (max-width: 768px) {
@@ -386,8 +411,9 @@ img {
 
 .skill-category h3 {
   font-size: 1.3rem;
+  font-weight: 500;
   margin-bottom: 1rem;
-  color: var(--primary-color);
+  color: var(--text-color);
 }
 
 .skills-grid {
@@ -401,23 +427,28 @@ img {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: var(--border-radius);
+  /* Transparent background and no border for skill tiles */
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
   padding: 1rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease;
   text-align: center;
 }
 
 .skill-tile i {
   font-size: 2rem;
-  color: var(--primary-color);
   margin-bottom: 0.5rem;
+}
+
+/* Icons without a "colored" class inherit black text colour */
+.skill-tile i:not(.colored) {
+  color: var(--text-color);
 }
 
 .skill-tile span {
   font-size: 0.9rem;
-  color: var(--muted-text);
+  color: var(--text-color);
 }
 
 .skill-tile:hover {
@@ -450,18 +481,19 @@ img {
 .experience-card h3 {
   margin-bottom: 0.3rem;
   font-size: 1.2rem;
+  font-weight: 400;
 }
 
 .experience-card h4 {
   margin-bottom: 0.3rem;
-  font-weight: normal;
-  color: var(--primary-color);
+  font-weight: 400;
+  color: var(--text-color);
 }
 
 .experience-card .location,
-.experience-card .duration {
+ .experience-card .duration {
   font-size: 0.8rem;
-  color: var(--muted-text);
+  color: var(--text-color);
 }
 
 #overlay {
@@ -509,23 +541,25 @@ img {
 
 #modal h3 {
   font-size: 1.4rem;
+  font-weight: 500;
   margin-bottom: 0.5rem;
 }
 
 #modal h4 {
   font-size: 1.1rem;
-  color: var(--primary-color);
+  font-weight: 400;
+  color: var(--text-color);
   margin-bottom: 0.25rem;
 }
 
 #modal p {
   margin-bottom: 1rem;
-  color: var(--muted-text);
+  color: var(--text-color);
 }
 
 #modal ul {
   margin-left: 1rem;
-  color: var(--muted-text);
+  color: var(--text-color);
 }
 
 #modal li {
@@ -561,13 +595,13 @@ img {
 .project-stack {
   font-size: 0.85rem;
   font-style: italic;
-  color: var(--muted-text);
+  color: var(--text-color);
   margin-bottom: 0.6rem;
 }
 
 .project-card ul {
   margin-left: 1rem;
-  color: var(--muted-text);
+  color: var(--text-color);
 }
 
 .project-card li {
@@ -580,13 +614,14 @@ img {
 
 .education-entry h3 {
   font-size: 1.3rem;
-  color: var(--primary-color);
+  font-weight: 400;
+  color: var(--text-color);
   margin-bottom: 0.2rem;
 }
 
 .education-duration {
   font-size: 0.9rem;
-  color: var(--muted-text);
+  color: var(--text-color);
   margin-bottom: 0.2rem;
 }
 
@@ -621,7 +656,7 @@ img {
 
 .cert-image {
   font-size: 3rem;
-  color: var(--primary-color);
+  color: var(--text-color);
   margin-bottom: 0.5rem;
 }
 
@@ -651,8 +686,8 @@ img {
 
 .show-cert {
   padding: 0.6rem 1rem;
-  background-color: var(--primary-color);
-  color: #fff;
+  background-color: var(--text-color);
+  color: #ffffff;
   border: none;
   border-radius: 9999px;
   font-size: 0.85rem;
@@ -662,7 +697,7 @@ img {
 
 .awards-list {
   margin-left: 1rem;
-  color: var(--muted-text);
+  color: var(--text-color);
 }
 
 .awards-list li {
@@ -684,11 +719,11 @@ img {
 }
 
 .contact-item a {
-  color: var(--primary-color);
+  color: var(--text-color);
 }
 
 .contact-item i {
-  color: var(--primary-color);
+  color: var(--text-color);
   font-size: 1.2rem;
 }
 
@@ -696,8 +731,8 @@ img {
   position: fixed;
   bottom: 1.5rem;
   right: 1.5rem;
-  background-color: var(--primary-color);
-  color: #fff;
+  background-color: var(--text-color);
+  color: #ffffff;
   padding: 0.75rem 1rem;
   border-radius: var(--border-radius);
   opacity: 0;
@@ -734,4 +769,26 @@ img {
   .contact-grid {
     align-items: flex-start;
   }
+}
+
+/* Section-specific alignment rules */
+
+/* Experience heading centre aligned, content left aligned (grid retains left alignment) */
+.experience-section .section-title {
+  text-align: center;
+}
+
+/* Skills section centre aligned including heading and grid */
+.skills-section {
+  text-align: center;
+}
+
+/* Projects section centre aligned */
+.projects-section {
+  text-align: center;
+}
+
+/* Certifications section centre aligned */
+.certifications-section {
+  text-align: center;
 }

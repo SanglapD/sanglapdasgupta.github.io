@@ -6,7 +6,8 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   /* Typing animation for hero role */
-  const roles = ['a AI Engineer', 'a ML Engineer'];
+  // Roles for the typing animation without leading articles
+  const roles = ['AI Engineer', 'ML Engineer'];
   let roleIndex = 0;
   let charIndex = 0;
   const dynamicTextEl = document.getElementById('dynamic-text');
