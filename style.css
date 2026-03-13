@@ -725,6 +725,62 @@ img {
   margin-bottom: 0.5rem;
 }
 
+.research-paper{
+
+display:flex;
+gap:20px;
+
+max-width:750px;
+margin:auto;
+
+padding:20px;
+
+border-left:3px solid var(--primary-color);
+
+transition:transform .25s ease;
+}
+
+.research-paper:hover{
+
+transform:translateX(4px);
+}
+
+.paper-icon{
+
+font-size:28px;
+color:var(--primary-color);
+}
+
+.paper-title{
+
+font-size:1.2rem;
+margin-bottom:6px;
+}
+
+.paper-conference{
+
+font-size:.85rem;
+opacity:.7;
+margin-bottom:8px;
+}
+
+.paper-description{
+
+font-size:.9rem;
+margin-bottom:10px;
+}
+
+.paper-link{
+
+font-size:.85rem;
+color:var(--primary-color);
+text-decoration:none;
+}
+
+.paper-link:hover{
+text-decoration:underline;
+}
+
 .education-entry {
   margin-bottom: 2rem;
 }
