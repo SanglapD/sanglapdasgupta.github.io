@@ -589,8 +589,9 @@ img {
 }
 
 .experience-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+  transform: translateY(-6px) scale(1.02);
+  transition: transform 0.28s cubic-bezier(.4,0,.2,1),
+  box-shadow 0.28s cubic-bezier(.4,0,.2,1);
   border-color: var(--primary-color);
 }
 
